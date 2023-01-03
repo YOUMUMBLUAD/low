@@ -1,23 +1,7 @@
-local old = nil
-
-for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-if v:IsA("Tool") and v:FindFirstChild("Pistol") then
-   old = v
+for _, v in ipairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Tool") then
+        v.Stats.GunType.Value = "Auto"
+v.Type.Value = "Vector"
+v.Stats.FireRate.Value = "0"
+    end
 end
-end
-local new = getsenv(old:FindFirstChild("Pistol"))
-local hookOld = function(number)
-debug.setconstant(new.OnFire, 70, number)
-end
-
-       local script = nil
-
-       for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-           if v:IsA("Tool") then
-               script = v
-           end
-       end
-       
-       local senv = getsenv(script)
-       local constant = debug.getconstant(senv.OnFire, 15)
-       debug.setconstant(senv.OnFire, 15, -1)
